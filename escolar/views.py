@@ -8,9 +8,8 @@ def login_screen(request):
 def do_login(request):
     return redirect('/prof_home')
 
-def prof_home(request):
-    context = {'first_name': 'Johnny'}
-    return render(request, '/', context)
+def logout(request):
+    return redirect('/prof_home')
 
 def pesquisa_notas(request):
     context = {'first_name': 'Johnny'}
