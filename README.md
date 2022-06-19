@@ -11,3 +11,14 @@ Como terminal aberto no diretório do projeto, basta executar o comando a seguir
 ```bash
 python manage.py runserver
 ```
+
+# Execução das migrations
+
+Para criarmos o banco a partir do Model especificado dentro do app `escolar`, precisamos criar as migrations e depois executa-las. Os comandos a seguir, em sequência, realizam essa tarefa:
+
+> python manage.py makemigrations
+
+Isso irá criar os arquivos de migration dentro da pasta *escolar/migrations*. Agora executando 
+
+> python manage.py migrate
+
