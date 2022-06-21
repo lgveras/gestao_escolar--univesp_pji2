@@ -2,7 +2,7 @@
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="{% url 'professor_home' prof_id=1 %}" class="brand-link">
+      <a href="{% url 'professor-home' prof_matricula="SERV-002" %}" class="brand-link">
         <img src="{% static 'dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
             style="opacity: .8">
         <span class="brand-text font-weight-light">Open university</span>
@@ -16,7 +16,8 @@
             <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="{% url 'professor_profile' prof_id=1 %}" class="d-block">{{ user.first_name }} {{ user.last_name }}</a>
+            <span class="text-white">Professor</span>
+            {% comment %} <a href="{% url 'professor_profile' prof_matricula= %}" class="d-block">{{ user.first_name }} {{ user.last_name }}</a> {% endcomment %}
           </div>
         </div>
 
@@ -27,7 +28,7 @@
                 with font-awesome or any other icon font library -->
             
             <li class="nav-item">
-              {% url 'professor_home' as professor_home %}
+              {% url 'professor-home' prof_matricula="SERV-002" as professor_home %}
               <a href="{{ professor_home }}" class="nav-link {% if request.path == professor_home %} active {% endif %}">
                 <i class="nav-icon fas fa-chart-line"></i>
                 <p>
@@ -38,8 +39,9 @@
             </li>
             
             <li class="nav-item">
-              {% url 'professor_profile' as professor_profile %}
+              {% url 'professor-profile' prof_matricula="SERV-002" as professor_profile %}
               <a href="{{ professor_profile }}" class="nav-link {% if request.path == professor_profile %} active {% endif %}">
+              {% comment %} <a href={% url 'professor-profile' prof_matricula="SERV-002"%} class="nav-link {% if request.path == professor_profile %} active {% endif %}"> {% endcomment %}
                 <i class="nav-icon fas fa-user-graduate"></i>
                 <p>
                   Perfil do Professor
@@ -49,7 +51,7 @@
             </li>
 
             <li class="nav-item">
-              {% url 'professor_disciplinas' as professor_disciplinas %}
+              {% url 'professor-disciplinas' prof_matricula="SERV-002" as professor_disciplinas %}
               <a href="{{ professor_disciplinas }}" class="nav-link {% if request.path == professor_disciplinas %} active {% endif %}">
                 <i class="nav-icon fas fa-chalkboard-user"></i>
                 <p>

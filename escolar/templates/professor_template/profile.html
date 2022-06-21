@@ -1,0 +1,66 @@
+{% extends 'professor_template/base_template.html' %}
+
+{% block page_title %}
+    Página do Professor
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+
+<section class="content">
+        <div class="container-fluid">
+            <div class="col-md-8">
+                <div class="card mb-3">
+                  <div class="card-body">
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Nome Completo</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{prof_nome}}
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Matrícula</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{prof_matricula}}
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Email</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{prof_email}}
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Telefone</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{prof_telefone}}
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Área de atuação</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{prof_area}}
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+</section>
+
+  {% endblock main_content %}
