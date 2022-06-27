@@ -66,3 +66,4 @@ class FaltasDiario(models.Model):
     diario_alunos_fk = models.ForeignKey(DiarioAlunos, on_delete=models.DO_NOTHING)
     data_presenca = models.DateField(null=True) 
     presenca = models.BooleanField(null=True)
+    

@@ -1,0 +1,12 @@
+{% extends 'professor_template/tab_disciplina_template.html' %}
+
+{% block aulas_disciplina_tab_content %}
+{% load static %}
+    <h1>Aulas</h1>
+    {% for aula in '123456' %}
+        <div class="bg-light mb-2" >
+            {{aula}}
+        </div >
+    {% endfor %}
+    <button class="">Adicionar nova aula</button>
+{% endblock aulas_disciplina_tab_content %}

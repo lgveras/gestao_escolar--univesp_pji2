@@ -1,0 +1,51 @@
+{% extends 'professor_template/base_template.html' %}
+
+{% block page_title %}
+    Página do Professor
+{% endblock page_title %}
+
+{% block main_content %}
+
+{% load static %}
+
+<section class="content">
+        <div class="container-fluid">
+            {% block nome_disciplina %}
+                <h1>Programação 1</h1>
+            {% endblock nome_disciplina %}
+
+            <ul class="nav nav-tabs">
+              <li class="nav-item">   
+                {% comment %} {% url 'professor-home' prof_matricula="SERV-002" as professor_home %} {% endcomment %}
+                {% url 'disciplinas-dados' prof_matricula="SERV-002" disciplina_id="1" as disciplinas_dados %}             
+                {% comment %} <a href="{% url 'disciplinas-dados' prof_matricula="SERV-002" disciplina_id="1" %}" class="nav-link {% if request.path == disciplinas_alunos_template  %} active {% endif %}" aria-current="page" >Pág 1</a> {% endcomment %}
+                <a href="{{disciplinas_dados}}" class="nav-link {% if request.path == disciplinas_dados  %} active {% endif %}" aria-current="page" >Dados</a>
+              </li>
+              <li class="nav-item">   
+                {% url 'disciplinas-alunos' prof_matricula="SERV-002" disciplina_id="1" as disciplinas_alunos %}             
+                <a href="{{disciplinas_alunos}}" class="nav-link {% if request.path == disciplinas_alunos  %} active {% endif %}" aria-current="page" >Alunos</a>
+              </li>
+              <li class="nav-item">   
+                {% url 'disciplinas-aulas' prof_matricula="SERV-002" disciplina_id="1" as disciplinas_aulas %}             
+                <a href="{{disciplinas_aulas}}" class="nav-link {% if request.path == disciplinas_aulas  %} active {% endif %}" aria-current="page" >Aulas</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="disciplina_content">
+              <div class="tab-pane fade {% if request.path == disciplinas_dados %} show active {% endif %}" id="dados-disciplina-tab" role="tabpanel" aria-labelledby="dados-tab" tabindex="0">
+                {% block dados_disciplina_tab_content %}
+                {% endblock dados_disciplina_tab_content %}
+              </div>
+              <div class="tab-pane fade {% if request.path == disciplinas_alunos %} show active {% endif %}" id="alunos-disciplina-tab" role="tabpanel" aria-labelledby="alunos-tab" tabindex="0">
+                {% block alunos_disciplina_tab_content %}
+                {% endblock alunos_disciplina_tab_content %}
+              </div>
+              <div class="tab-pane fade {% if request.path == disciplinas_aulas %} show active {% endif %}" id="alunos-disciplina-tab" role="tabpanel" aria-labelledby="aulas-tab" tabindex="0">
+                {% block aulas_disciplina_tab_content %}
+                {% endblock aulas_disciplina_tab_content %}
+              </div>
+            </div>
+        </div><!-- /.container-fluid -->
+</section>
+
+  {% endblock main_content %}
+

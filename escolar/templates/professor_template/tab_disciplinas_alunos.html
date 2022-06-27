@@ -1,0 +1,66 @@
+{% extends 'professor_template/tab_disciplina_template.html' %}
+
+{% block alunos_disciplina_tab_content %}
+{% load static %}
+
+{% load newvar %}
+
+{% newvar as lista_alunos %}
+    <div class="overflow-auto" >
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Aluno</th>
+                {% comment %} TODO: Substituir pelas aulas {% endcomment %}
+                {% with aulas="12345" %}
+                {% for data_aula in aulas %}
+                    <th scope="col">{{data_aula}}</th>
+                {% endfor %}
+                {% endwith %}            
+            </tr>
+            </thead>
+            <tbody>
+                {% for aluno in lista_alunos %}
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>{{aluno.nome}}</td>
+                        {% comment %} TODO: Substituir pelas aulas {% endcomment %}
+                        {% with aulas="12345" %}
+                        {% for data_aula in aulas %}
+                            <td>
+                                <a onclick="mudaPresenca(event)"
+                                    class= "{% if data_aula == '1' %}text-blue{% else %}text-red{% endif %}"
+                                    >
+                                    <span>        
+                                        {% if data_aula == '1' %}
+                                            Presença
+                                        {% else %}
+                                            Falta
+                                        {% endif %}
+                                    </span>
+                                </a>
+                            </td>
+                        {% endfor %}
+                        {% endwith %}  
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function mudaPresenca(event){
+            event.preventDefault();
+            if( event.target.innerText === "Presença"){
+                event.target.innerText = "Falta";
+                event.target.classList.remove("text-blue")
+                event.target.classList.add("text-red")
+            } else if( event.target.innerText === "Falta"){
+                event.target.innerText = "Presença";
+                event.target.classList.remove("text-red")
+                event.target.classList.add("text-blue")
+            }
+        }
+    </script>
+{% endblock alunos_disciplina_tab_content %}
