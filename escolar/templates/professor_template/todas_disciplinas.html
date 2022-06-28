@@ -1,7 +1,7 @@
 {% extends 'professor_template/base_template.html' %}
 
 {% block page_title %}
-    Página do Professor
+    <h1>Disciplinas</h1>
 {% endblock page_title %}
 
 {% block main_content %}
@@ -10,7 +10,14 @@
 
 <section class="content">
         <div class="container-fluid">
-            <h1>Disciplinas</h1>
+            {% for disciplina in  'qwasdsa' %}
+                <div class="card">
+                    <div class="card-body">
+                        <a href="1/dados" class="fs-1 link-info stretched-link">Programação 2</a>
+                        <h3 class="fs-3">Curso: <span class="text-gray">Engenharia de controle e automação</span></h3>
+                    </div>
+                </div>
+            {% endfor %}
         </div><!-- /.container-fluid -->
 </section>
 

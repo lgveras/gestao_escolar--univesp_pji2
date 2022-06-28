@@ -13,13 +13,9 @@ def aulas(request, prof_matricula, disciplina_id):
     context = {'first_name': 'Johnny'}
     return render(request, 'professor_template/tab_disciplinas_aulas.html', context)
 
-def todas(request):
+def lista_disciplina(request, prof_matricula):
     context = {'first_name': 'Johnny'}
-    return render(request, 'professor_template/disciplina.html', context)
-
-def dados_disciplina(request, prof_matricula, disciplina_id):
-    context = {'first_name': 'Johnny'}
-    return render(request, 'professor_template/disciplina.html', context)
+    return render(request, 'professor_template/todas_disciplinas.html', context)
 
 # Endpoint que busca todas as disciplinas de um professor
 def disciplinas(request, prof_matricula):

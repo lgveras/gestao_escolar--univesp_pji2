@@ -51,8 +51,8 @@
             </li>
 
             <li class="nav-item">
-              {% url 'professor-disciplinas' prof_matricula="SERV-002" as professor_disciplinas %}
-              <a href="{{ professor_disciplinas }}" class="nav-link {% if request.path == professor_disciplinas %} active {% endif %}">
+              {% url 'lista-disciplinas' prof_matricula="SERV-002" as lista_disciplinas %}
+              <a href="{{ lista_disciplinas }}" class="nav-link {% if request.path == lista_disciplinas %} active {% endif %}">
                 <i class="nav-icon fas fa-chalkboard-user"></i>
                 <p>
                   Disciplinas Ministradas

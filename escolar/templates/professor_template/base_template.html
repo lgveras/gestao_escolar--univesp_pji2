@@ -26,6 +26,8 @@
   <link rel="stylesheet" href="{% static "daterangepicker/daterangepicker.css" %}">
   <!-- summernote -->
   <link rel="stylesheet" href="{% static "summernote/summernote-bs4.css" %}">
+  <!-- Bootstrap 5 CSS -->
+  <link rel="stylesheet" href="{% static "bootstrap5/css/bootstrap.min.css" %}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
@@ -123,7 +125,9 @@
   $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
-<script src="{% static "bootstrap/js/bootstrap.bundle.min.js"  %}"></script>
+{% comment %} <script src="{% static "bootstrap/js/bootstrap.bundle.min.js"  %}"></script> {% endcomment %}
+<!-- Bootstrap 5 -->
+<script src="{% static "bootstrap5/js/bootstrap.bundle.min.js"  %}"></script>
 <!-- ChartJS -->
 <script src="{% static "chart.js/Chart.min.js"  %}"></script>
 <!-- Sparkline -->
@@ -148,7 +152,8 @@
 <script src="{% static 'dist/js/pages/dashboard.js'  %}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{% static 'dist/js/demo.js'  %}"></script>
-
+<!-- Axios -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 {% comment %} For Custom JS {% endcomment %}
 {% block custom_js %}
 {% endblock custom_js %}

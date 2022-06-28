@@ -2,11 +2,61 @@
 
 {% block aulas_disciplina_tab_content %}
 {% load static %}
-    <h1>Aulas</h1>
-    {% for aula in '123456' %}
-        <div class="bg-light mb-2" >
-            {{aula}}
-        </div >
-    {% endfor %}
-    <button class="">Adicionar nova aula</button>
+    <ul class="list-group list-group-flush container-sm mt-4">
+
+        {% for aula in '123456' %}
+            <li class="list-group-item">
+                <div class="row align-items-start">
+                    <div class="col-1">
+                        {{aula}}
+                    </div>
+                    <div class="col-4">
+                        12/08/2022
+                    </div>
+                    <div class="col-6">
+                        Estrututura de dados
+                    </div>
+                </div>
+            </li>      
+        {% endfor %}
+    </ul>
+    <!-- Button trigger modal -->
+    <button class="btn btn-info mt-4 mb-4" data-bs-toggle="modal" data-bs-target="#aula-modal">Adicionar nova aula</button>
+
+    <!--============== Modal ===============-->
+    <div class="modal fade" id="aula-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Nova aula</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="form-floating mb-3">
+                <input id="aula-content" type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Conteúdo</label>     
+              </div>
+              <div class="form-floating mb-3">
+                <input id="aula-date" type="date" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Data da aula</label>     
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+              <button type="button" class="btn btn-primary" onclick="salvaNovaAula()">Salvar</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <script>
+        function salvaNovaAula(){
+            let formAulaData = {}
+            formAulaData.conteudo = document.querySelector("#aula-content").value;
+            formAulaData.data = document.querySelector("#aula-date").value;
+            axios.post('/add_aula', formAulaData)
+                .then()
+                .catch(err => console.error(err));
+        }
+    </script>
 {% endblock aulas_disciplina_tab_content %}
