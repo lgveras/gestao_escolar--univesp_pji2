@@ -1,7 +1,7 @@
-{% extends 'student_template/base_template.html' %}
+{% extends 'professor_template/base_template.html' %}
 
 {% block page_title %}
-    Página inicial do Professor
+    Dashboard do Professor
 {% endblock page_title %}
 
 {% block main_content %}
@@ -10,7 +10,6 @@
 
 <section class="content">
         <div class="container-fluid">
-
             {% comment %} Boxes Section Starts {% endcomment %}
             <div class="row">
                 <div class="col-lg-3 col-6">
@@ -24,7 +23,7 @@
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
                     </div>
-                    <a href="{% url 'student_view_attendance' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -39,7 +38,7 @@
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
                     </div>
-                    <a href="{% url 'student_view_attendance' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -54,7 +53,7 @@
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
                     </div>
-                    <a href="{% url 'student_view_attendance' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -136,11 +135,13 @@
             ],
             datasets: [
                 {
-                data: [{{ attendance_absent }}, {{ attendance_present }}],
+                data: [5, 6],
+                {% comment %} data: [{{ attendance_absent }}, {{ attendance_present }}], {% endcomment %}
                 backgroundColor : ['#f56954', '#00a65a'],
                 }
             ]
             }
+  
            //Code for Pie Chart
             var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
             var pieData        = pieData;
@@ -157,16 +158,19 @@
             })
 
             //Code for Bar Chart
-            var subjects = {{ subject_name|safe }}
+            var subjects = [1,2,3,4,5]
+            var data_present = [2,3,4,7,5]
+            var data_absent = [1,2,4,2,2]
+            {% comment %} var subjects = {{ subject_name }}
             var data_present = {{ data_present }}
-            var data_absent = {{ data_absent }}
+            var data_absent = {{ data_absent }} {% endcomment %}
 
             //Dataset for Bar Chart
             var areaChartData = {
             labels  : subjects,
             datasets: [
                 {
-                label               : 'Present in Class',
+                label               : 'Presenças em Aula',
                 backgroundColor     : 'rgba(60,141,188,0.9)',
                 borderColor         : 'rgba(60,141,188,0.8)',
                 pointRadius          : false,
@@ -177,7 +181,7 @@
                 data                : data_present
                 },
                 {
-                label               : 'Absent in Class',
+                label               : 'Ausências em Aula',
                 backgroundColor     : 'rgba(210, 214, 222, 1)',
                 borderColor         : 'rgba(210, 214, 222, 1)',
                 pointRadius         : false,
