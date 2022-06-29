@@ -6,7 +6,7 @@ def login_screen(request):
     return render(request, 'login.html', context)
 
 def do_login(request):
-    return redirect('/prof/1/home')
+    return redirect('/prof/SERV-002/home')
 
 def logout(request):
     return redirect('/prof_home')
