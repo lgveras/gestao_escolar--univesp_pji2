@@ -14,13 +14,14 @@ urlpatterns = [
     path('prof/<str:prof_matricula>/profile/', professor_views.profile, name="professor-profile"),
      # Página que listará dados de uma disciplina
     path('prof/<str:prof_matricula>/disciplinas/', disciplina_views.lista_disciplina, name="lista-disciplinas"),
-    # Página que listará os alunos de uma disciplina. Será possível alterar as datas
-    path('prof/<int:prof_matricula>/disciplinas/<int:disciplina_id>/alunos', disciplina_views.disciplina_alunos, name="disciplina-alunos"),
+       
+    path('prof/<str:prof_matricula>/disciplinas/<str:disciplina_id>/dados', disciplina_views.dados, name="disciplinas-dados"),
+    path('prof/<str:prof_matricula>/disciplinas/<str:disciplina_id>/alunos', disciplina_views.alunos, name="disciplinas-alunos"),
+    path('prof/<str:prof_matricula>/disciplinas/<str:disciplina_id>/aulas', disciplina_views.aulas, name="disciplinas-aulas"),
     
-    path('prof/<str:prof_matricula>/disciplinas/<int:disciplina_id>/dados', disciplina_views.dados, name="disciplinas-dados"),
-    path('prof/<str:prof_matricula>/disciplinas/<int:disciplina_id>/alunos', disciplina_views.alunos, name="disciplinas-alunos"),
-    path('prof/<str:prof_matricula>/disciplinas/<int:disciplina_id>/aulas', disciplina_views.aulas, name="disciplinas-aulas"),
+    # path('prof/<str:prof_matricula>/disciplinas/<str:disciplina_id>/aulas/add', disciplina_views.add_aula, name="adiciona-aula"),
     
+
     # URLs para funcionalidades de gestor
     path('gestor_home/', gestor_views.home, name="gestor-home"),
     # Configurar as outras rotas de gestor

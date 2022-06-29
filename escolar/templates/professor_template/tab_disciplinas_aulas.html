@@ -1,25 +1,32 @@
 {% extends 'professor_template/tab_disciplina_template.html' %}
 
+{% block nome_disciplina %}
+  <h1>{{disciplina.nome}}</h1>
+{% endblock nome_disciplina %}
 {% block aulas_disciplina_tab_content %}
-{% load static %}
-    <ul class="list-group list-group-flush container-sm mt-4">
-
-        {% for aula in '123456' %}
+    {% load static %} 
+    {% if qtd_aulas == 0 %}
+      <h2>Ainda não há aulas registradas para este curso</h2>
+    {% else %}
+      <ul class="list-group list-group-flush container-sm mt-4">
+        {% for aula in aulas %}
             <li class="list-group-item">
                 <div class="row align-items-start">
                     <div class="col-1">
-                        {{aula}}
+                        {{aula.ordem_aula}}
                     </div>
                     <div class="col-4">
-                        12/08/2022
+                        {{aula.data_aula}}
                     </div>
                     <div class="col-6">
-                        Estrututura de dados
+                        {{aula.descricao}}
                     </div>
                 </div>
             </li>      
         {% endfor %}
-    </ul>
+      </ul>
+    {% endif %}
+
     <!-- Button trigger modal -->
     <button class="btn btn-info mt-4 mb-4" data-bs-toggle="modal" data-bs-target="#aula-modal">Adicionar nova aula</button>
 
@@ -32,31 +39,50 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
             </div>
             <div class="modal-body">
-              <div class="form-floating mb-3">
-                <input id="aula-content" type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Conteúdo</label>     
+              <!-- Form -->
+              {% comment %} <form action="/" class="row g-3 needs-validation" novalidate onsubmit="salvaNovaAula(event)"> {% endcomment %}
+              <form action="" method="POST" class="row g-3 needs-validation">
+                {% csrf_token %}
+                
+                {% comment %} 
+                Atende ao critério de sucesso abaixo
+                3.3.2 Labels or Instructions (https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=132%2C331%2C413%2C332#labels-or-instructions)
+                https://www.w3.org/WAI/WCAG21/Techniques/general/G131.html {% endcomment %}
+                <div class="form-floating mb-3">
+                  <input id="aula_content" name="aula_content" type="text" class="form-control" required>
+                  <label for="aula_content">Conteúdo (required)</label>     
+                </div>
+                <div class="form-floating mb-3">
+                  <input id="aula_date" name="aula_date" type="date" class="form-control" required>
+                  <label for="aula_date">Data da aula (required)</label>     
+                </div>
               </div>
-              <div class="form-floating mb-3">
-                <input id="aula-date" type="date" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Data da aula</label>     
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <input type="submit" class="btn btn-primary" value="Salvar">
               </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-              <button type="button" class="btn btn-primary" onclick="salvaNovaAula()">Salvar</button>
-            </div>
+            </form>
+            <!-- End Form -->
           </div>
         </div>
     </div>
 
-    <script>
-        function salvaNovaAula(){
-            let formAulaData = {}
+    {% comment %} <script>
+        function salvaNovaAula(event){
+            event.preventDefault();
+            let formAulaData = {};
+            
             formAulaData.conteudo = document.querySelector("#aula-content").value;
             formAulaData.data = document.querySelector("#aula-date").value;
-            axios.post('/add_aula', formAulaData)
+            
+            {% url 'adiciona-aula' prof_matricula=professor.cadastro_fk.matricula disciplina_id=disciplina.codigo as adiciona_aula %}   
+
+            axios.post({{adiciona_aula}}, formAulaData)
                 .then()
                 .catch(err => console.error(err));
+
+            //Feito usando JQuery
+            $('#aula-modal').modal('toggle');
         }
-    </script>
+    </script> {% endcomment %}
 {% endblock aulas_disciplina_tab_content %}

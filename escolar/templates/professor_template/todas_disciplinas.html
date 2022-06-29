@@ -10,11 +10,11 @@
 
 <section class="content">
         <div class="container-fluid">
-            {% for disciplina in  'qwasdsa' %}
+            {% for diario in prof_diarios %}
                 <div class="card">
                     <div class="card-body">
-                        <a href="1/dados" class="fs-1 link-info stretched-link">Programação 2</a>
-                        <h3 class="fs-3">Curso: <span class="text-gray">Engenharia de controle e automação</span></h3>
+                        <a href="{{diario.disciplina_fk.codigo}}/dados" class="fs-1 link-info stretched-link">{{diario.disciplina_fk.nome}}</a>
+                        <h3 class="fs-3">Curso: <span class="text-gray">{{diario.disciplina_fk.curso_fk.nome}}</span></h3>
                     </div>
                 </div>
             {% endfor %}

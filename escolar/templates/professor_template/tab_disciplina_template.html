@@ -1,7 +1,7 @@
 {% extends 'professor_template/base_template.html' %}
 
 {% block page_title %}
-    Página do Professor
+    Disciplinas
 {% endblock page_title %}
 
 {% block main_content %}
@@ -17,16 +17,16 @@
             <ul class="nav nav-tabs">
               <li class="nav-item">   
                 {% comment %} {% url 'professor-home' prof_matricula="SERV-002" as professor_home %} {% endcomment %}
-                {% url 'disciplinas-dados' prof_matricula="SERV-002" disciplina_id="1" as disciplinas_dados %}             
+                {% url 'disciplinas-dados' prof_matricula=professor.cadastro_fk.matricula disciplina_id=disciplina.codigo as disciplinas_dados %}   
                 {% comment %} <a href="{% url 'disciplinas-dados' prof_matricula="SERV-002" disciplina_id="1" %}" class="nav-link {% if request.path == disciplinas_alunos_template  %} active {% endif %}" aria-current="page" >Pág 1</a> {% endcomment %}
                 <a href="{{disciplinas_dados}}" class="nav-link {% if request.path == disciplinas_dados  %} active {% endif %}" aria-current="page" >Dados</a>
               </li>
               <li class="nav-item">   
-                {% url 'disciplinas-alunos' prof_matricula="SERV-002" disciplina_id="1" as disciplinas_alunos %}             
+                {% url 'disciplinas-alunos' prof_matricula=professor.cadastro_fk.matricula disciplina_id=disciplina.codigo as disciplinas_alunos %}             
                 <a href="{{disciplinas_alunos}}" class="nav-link {% if request.path == disciplinas_alunos  %} active {% endif %}" aria-current="page" >Alunos</a>
               </li>
               <li class="nav-item">   
-                {% url 'disciplinas-aulas' prof_matricula="SERV-002" disciplina_id="1" as disciplinas_aulas %}             
+                {% url 'disciplinas-aulas' prof_matricula=professor.cadastro_fk.matricula disciplina_id=disciplina.codigo as disciplinas_aulas %}             
                 <a href="{{disciplinas_aulas}}" class="nav-link {% if request.path == disciplinas_aulas  %} active {% endif %}" aria-current="page" >Aulas</a>
               </li>
             </ul>

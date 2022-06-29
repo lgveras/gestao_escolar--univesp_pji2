@@ -1,7 +1,7 @@
 {% extends 'professor_template/tab_disciplina_template.html' %}
 
 {% block nome_disciplina %}
-<h1>Programação 2</h1>
+<h1>{{disciplina.nome}}</h1>
 {% endblock nome_disciplina %}
 {% block dados_disciplina_tab_content %}
 {% load static %}        
@@ -16,7 +16,8 @@
                   <span class="fw-bolder">Curso:</span>
                 </div>
                 <div class="col-4">
-                    <span>Ciências da Computação</span>
+                    <span>{{disciplina.curso_fk.nome}}</span>
+                    {% comment %} <span>Ciências da Computação</span> {% endcomment %}
                 </div>
               </div>           
               <hr class="dropdown-divider">
@@ -25,7 +26,7 @@
                   <span class="fw-bolder">Código:</span>
                 </div>
                 <div class="col-4">
-                    <span>PROGM-01</span>
+                    <span>{{disciplina.codigo}}</span>
                 </div>
               </div>
               <hr class="dropdown-divider">
@@ -43,7 +44,7 @@
                   <span class="fw-bolder">Área de conhecimento:</span>
                 </div>
                 <div class="col-4">
-                    <span>Computação</span>
+                    <span>{{disciplina.area_conhecimento_fk.descricao}}</span>
                 </div>
               </div>
               <hr class="dropdown-divider">
@@ -52,7 +53,7 @@
                   <span class="fw-bolder">Carga horária:</span>
                 </div>
                 <div class="col-4">
-                    <span>80 h</span>
+                    <span>{{disciplina.carga_horaria}} h</span>
                 </div>
               </div>
               <hr class="dropdown-divider">
@@ -61,7 +62,7 @@
                   <span class="fw-bolder">Professor:</span>
                 </div>
                 <div class="col-4">
-                    <span>Marcos Pasquim</span>
+                    <span>{{professor.cadastro_fk.nome}}</span>
                 </div>
               </div>
             </div>
