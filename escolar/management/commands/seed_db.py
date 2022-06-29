@@ -1,13 +1,11 @@
 from asyncio.log import logger
-from turtle import clear
-from django.core.management.base import BaseCommand, CommandError
-from psycopg2 import Date
+from django.core.management.base import BaseCommand
 from escolar.models import Aluno, Cadastro, Curso, Diario, DiarioAlunos, Professor, AreaConhecimento, Disciplina
 import names
 import datetime
 
 # Exemplo de comando
-# python manage.py seed --mode=refresh
+# python manage.py seed_db --mode=refresh
 
 """ Clear all data and creates addresses """
 MODE_REFRESH = 'refresh'
