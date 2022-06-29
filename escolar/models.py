@@ -52,7 +52,7 @@ class Diario(models.Model):
     professor_fk = models.ForeignKey(Professor, on_delete=models.DO_NOTHING)
     inicio = models.DateField(null=True)
     fim = models.DateField(null=True)
-    ano_semestre = models.CharField(max_length=5, null=True) #padrão: 2022_1
+    ano_semestre = models.CharField(max_length=8, null=True) #padrão: 2022_1
 
 class Aula(models.Model):
     diario_fk = models.ForeignKey(Diario, on_delete=models.DO_NOTHING)
