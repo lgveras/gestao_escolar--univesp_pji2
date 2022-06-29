@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 ##### Definição dos papéis no sistema
 class Cadastro(models.Model):
-    matricula = models.CharField(max_length=8, primary_key=True)
+    matricula = models.CharField(max_length=10, primary_key=True)
     nome = models.CharField(max_length=200)
     idade = models.IntegerField()
     telefone = models.CharField(max_length=15)
@@ -39,7 +39,7 @@ class Professor(models.Model):
 
 class Disciplina(models.Model):
     # O código pode ser de até 6 characteres. Por exemplo, Matemática pode ser MAT-S1, pois é do primeiro semestre
-    codigo = models.CharField(max_length=6, primary_key=True)
+    codigo = models.CharField(max_length=10, primary_key=True)
     nome = models.CharField(max_length=200)
     area_conhecimento_fk = models.ForeignKey(AreaConhecimento, on_delete=models.DO_NOTHING)
     carga_horaria = models.IntegerField(null=True)
