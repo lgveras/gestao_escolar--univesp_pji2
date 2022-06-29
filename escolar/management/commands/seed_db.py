@@ -1,6 +1,6 @@
 from asyncio.log import logger
 from django.core.management.base import BaseCommand
-from escolar.models import Aluno, Cadastro, Curso, Diario, DiarioAlunos, Professor, AreaConhecimento, Disciplina
+from escolar.models import Aluno, Aula, Cadastro, Curso, Diario, DiarioAlunos, FaltasDiario, Professor, AreaConhecimento, Disciplina
 import names
 import datetime
 
@@ -46,7 +46,9 @@ def create_data_in_tables():
 
 
 def clear_data_from_tables():
-    # É importante que a inserção dos dados siga a ordem abaixo devido às associações
+    # É importante que a limpeza dos dados siga a ordem abaixo devido às associações
+    clear_faltasdiario()
+    clear_aulas()
     clear_diarioalunos()
     clear_aluno()
     clear_diario()
@@ -272,3 +274,13 @@ def clear_diarioalunos():
     # Deleta todos os dados de "aluno"
     logger.info("Deletando todos os dados de 'aluno'")
     DiarioAlunos.objects.all().delete()
+
+def clear_aulas():
+    # Deleta todos os dados de "aluno"
+    logger.info("Deletando todos os dados de 'aula'")
+    Aula.objects.all().delete()
+
+def clear_faltasdiario():
+    # Deleta todos os dados de "aluno"
+    logger.info("Deletando todos os dados de 'faltasdiario'")
+    FaltasDiario.objects.all().delete()
