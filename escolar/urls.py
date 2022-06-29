@@ -1,5 +1,5 @@
-from django.urls import path, include
-from . import professor_views, views, gestor_views, disciplina_views
+from django.urls import path
+from . import professor_views, views, disciplina_views
 
 urlpatterns = [
     # URLs para funcionalidades de gestor

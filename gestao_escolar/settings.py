@@ -15,8 +15,8 @@ import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-STATIC_URL = '/static/'
-STATIC_ROOT = Path(__file__).resolve().parent.parent.joinpath(STATIC_URL)
+# STATIC_URL = '/static/'
+# STATIC_ROOT = Path(__file__).resolve().parent.parent.joinpath(STATIC_URL)
 
 
 # Quick-start development settings - unsuitable for production
@@ -29,7 +29,6 @@ SECRET_KEY = 'django-insecure-c3#rq20w#0jhc=*)vsobqtdud^p4=-c6_i$cq@6m=g7()k8r-s
 DEBUG = True
 
 ALLOWED_HOSTS = ['.herokuapp.com']
-
 
 # Application definition
 
@@ -122,9 +121,12 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = (
-  Path.joinpath(BASE_DIR, 'static/'),
-)
+# STATICFILES_DIRS = [
+#   Path.joinpath(BASE_DIR, 'static/'),
+# ]
+# STATICFILES_DIRS = (
+#   Path.joinpath(BASE_DIR, 'static/'),
+# )
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
