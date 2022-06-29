@@ -116,12 +116,12 @@ def create_areas_conhecimento():
     area1.descricao = "Matemática"
     area1.save()
 
-    area2 = AreaConhecimento.objects.create(
-        codigo="1.05.00.00-6 "
-    )
-    # area2.codigo = "1.05.00.00-6 "
-    area2.descricao = "Física"
-    area2.save()
+    # area2 = AreaConhecimento.objects.create(
+    #     codigo="1.05.00.00-6 "
+    # )
+    # # area2.codigo = "1.05.00.00-6 "
+    # area2.descricao = "Física"
+    # area2.save()
 
     area3 = AreaConhecimento.objects.create(
         codigo="7.08.00.00-6"
